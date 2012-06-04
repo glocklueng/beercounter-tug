@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+	#total_count{
+		font-family:"Courier New", Courier, monospace;
+		font-weight:bold;
+      font-size:240px;
+      text-align:left;
+      background:url("hirter_logo_black_small.png") no-repeat right bottom;
+      width:1280px;
+      height:250px;
+	}
+	body{
+	   background:black;
+		color:white;
+      width:1280px;
+      height:800px;
+     	font-family:"Courier New", Courier, monospace;
+		font-weight:bold;
+	}
+	#graph{
+		background:url("plot.png") no-repeat right bottom;
+		width:850px;
+		height:400px;
+	}
+	#bpm{
+		font-size:80px;
+		position: absolute;
+		left:900px;
+		top:400px;
+		width:300px;
+	   height:100px;
+		z-index:0;
+	}
+	#arrow{
+		position: absolute;
+		left:1000px;
+		top:280px;
+		width:100px;
+	   height:100px;
+	   z-index:1;
+	}
+	
+	#beer_pumps{
+		position:absolute;
+		bottom:10px;
+		left:0;
+		z-index:3;
+		width:1280px;;
+		height:50px;
+		background:#333;
+		font-size:30px;
+		color:#fff;
+		font-weight:bold;
+		text-align: justify;
+	}
+	#beer_pumps tr{
+		border-bottom:4px solid #000;
+	}
+	#sum{
+		position:absolute;
+		left:0;
+		top:600px;
+		width:1280px;
+	}
+	#done{
+		
+	}
+	</style></head>
+
+<body>
+
+
+<div id="total_count">
+88.372
+</div>
+
+<div id="graph">Some JS Guru's Work</div>
+
+<div id="bpm">21&nbsp;bpm</div>
+<img id="arrow" src="http://bis.htu.tugraz.at/files/up.png" />
+<div id="sum"><span style="width:30px;">pumped so far: 2396 liter</span></div>
+
+
+
+<table id="beer_pumps">
+<tr><td colspan="8">total individual estimated beer pump counter sum stats overview table</td></tr>
+<tr><td>1232</td><td>932</td><td>342</td><td>123</td><td>132</td><td>1232</td><td>132</td><td>232</td></tr>
+</table>
+
+
+</body>
+</html>
