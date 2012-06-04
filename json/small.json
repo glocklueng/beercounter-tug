@@ -1,0 +1,23 @@
+{
+	"total": 123123,
+	"bpm": 23.1
+	"pumps":
+	[
+		{"name" :"zapfhan1",
+		 "value": 123},
+		{"name" :"zapfhan2",
+		 "value": 123},
+		{"name" :"zapfhan3",
+		 "value": 123},
+		{"name" :"zapfhan4",
+		 "value": 123},
+		{"name" :"zapfhan5",
+		 "value": 123},
+		{"name" :"zapfhan6",
+		 "value": 123},
+		{"name" :"zapfhan7",
+		 "value": 123},
+		{"name" :"zapfhan8",
+		 "value": 123}
+	],
+}
