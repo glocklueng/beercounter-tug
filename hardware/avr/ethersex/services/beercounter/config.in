@@ -1,0 +1,6 @@
+dep_bool_menu "Beer Counter" BEERCOUNTER_SUPPORT
+	dep_bool "Method init auto start" BEERCOUNTER_INIT_AUTOSTART_SUPPORT $BEERCOUNTER_SUPPORT
+	dep_bool "Method periodic auto start" BEERCOUNTER_PERIODIC_AUTOSTART_SUPPORT $BEERCOUNTER_SUPPORT
+	comment  "Debugging Flags"
+	dep_bool 'enable debug' DEBUG_BEERCOUNTER $DEBUG $BEERCOUNTER_SUPPORT
+endmenu
