@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Beer</title>
 	<style type="text/css">
 	html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -124,6 +124,71 @@ table {
 		font-size: 30px;
 	}
 	</style>
+	<script language="javascript" type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript">
+
+var UPDATE_RATE=500;
+var x=0;
+
+
+	pumps =
+	[
+		{"name" :"zapfhan1",
+		 "value": 123},
+		{"name" :"zapfhan2",
+		 "value": 123},
+		{"name" :"zapfhan3",
+		 "value": 123},
+		{"name" :"zapfhan4",
+		 "value": 123},
+		{"name" :"zapfhan5",
+		 "value": 123},
+		{"name" :"zapfhan6",
+		 "value": 123},
+		{"name" :"zapfhan7",
+		 "value": 123},
+		{"name" :"zapfhan8",
+		 "value": 123}
+	]
+
+$(function () {
+
+	setInterval(
+		function ()
+		{
+			x+=1;
+
+			$.getJSON('http://paratest.htu.tugraz.at/data/small.json', function(data) {
+			  var items = [];
+
+			  $.each(data, function(key, val) {
+			    items.push('<li id="' + key + '">' + val + '</li>');
+			  });
+
+			  $('<ul/>', {
+			    'class': 'my-new-list',
+			    html: items.join('')
+			  }).appendTo('body');
+			});
+
+			$('#table_inner').empty();
+			$(pumps).each(
+				function (index, element)
+				{
+
+					$('#table_inner').append($('<td>').html(element.name + "<br />" + (element.value+x)));
+				}
+				)
+
+			$("#total_count").text(x);
+			$("#bpm").html(x + " BPM");
+			$("#sum_num").width(x+'%');
+			document.setTimeout(update,UPDATE_RATE);
+		}, UPDATE_RATE )
+	$("#bpm").html(x + " BPM");
+})
+
+	</script>
 </head>
 
 <body>
@@ -138,12 +203,12 @@ table {
 <div id="bpm">21&nbsp;bpm</div>
 <img id="arrow" src="arrows/up_hopf.png" />
 <div id="hundert">100%</div>
-<div id="sum"><div style="width:90%;">&nbsp;</div></div>
+<div id="sum"><div id="sum_num" style="width:90%;">&nbsp;</div></div>
 
 
 
 <table id="beer_tap">
-<tr><td>tap 1:<br />1232</td><td>tap 2:<br />932</td><td>tap 3:<br />342</td><td>tap 4:<br />123</td><td>tap 5:<br />132</td><td>tap 6:<br />1232</td><td>tap 7:<br />132</td><td>tap 8:<br />232</td></tr>
+<tr id="table_inner"><td>tap 1:<br />1232</td><td>tap 2:<br />932</td><td>tap 3:<br />342</td><td>tap 4:<br />123</td><td>tap 5:<br />132</td><td>tap 6:<br />1232</td><td>tap 7:<br />132</td><td>tap 8:<br />232</td></tr>
 </table>
 
 
