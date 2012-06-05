@@ -27,7 +27,7 @@ def fetch_small_data():
 	result["bpm"] = cur.fetchone()["bpm"]
 
 	f_out = open(OUTFILE, 'w')
-	json.dumps(result, cls=DecimalEncoder)
+	f_out.write(json.dumps(result, cls=DecimalEncoder))
 	f_out.close()
 
 if __name__ == '__main__':
