@@ -65,10 +65,15 @@ table {
      	font-family:"Courier New", Courier, monospace;
 		font-weight:bold;
 	}
-	#graph{
-		background:url("plot.png") no-repeat right bottom;
+	#graph_hour{
+		/*background:url("plot.png") no-repeat right bottom;*/
 		width:850px;
-		height:400px;
+		height:300px;
+	}
+	#graph_10h{
+		/*background:url("plot.png") no-repeat right bottom;*/
+		width:850px;
+		height:100px;
 	}
 	#bpm{
 		font-size:80px;
@@ -124,7 +129,8 @@ table {
 		font-size: 30px;
 	}
 	</style>
-	<script language="javascript" type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="../webtests/flot/jquery.flot.js"></script>
 	<script language="javascript" type="text/javascript">
 
 var UPDATE_RATE=100;
@@ -168,7 +174,19 @@ $(function () {
 			});
 
 
-		}, UPDATE_RATE )
+		}, UPDATE_RATE );
+
+	setInterval(
+		function ()
+		{
+
+			$.getJSON('/data/history.json', function(data) {
+				$.plot($('#graph_hour'), [data.last_hour], {time:true, xaxis:{mode:"time"}})
+				$.plot($('#graph_10h'), [data['10h']], {time:true, xaxis:{mode:"time"}})
+			});
+		},
+	5000
+	);
 })
 
 	</script>
@@ -181,7 +199,9 @@ $(function () {
 88.372
 </div>
 
-<div id="graph">Some JS Guru's Work</div>
+
+<div id="graph_hour">&nbsp;</div>
+<div id="graph_10h">&nbsp;</div>
 
 <div id="bpm">21&nbsp;bpm</div>
 <img id="arrow" src="arrows/up.png" />
