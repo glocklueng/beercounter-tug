@@ -1,7 +1,7 @@
 {
 	"total": 123123,
-	"bpm": 23.1
-	"pumps":
+	"bpm": 23.1,
+	"pumps" :
 	[
 		{"name" :"zapfhan1",
 		 "value": 123},
