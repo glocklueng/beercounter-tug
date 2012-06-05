@@ -130,10 +130,8 @@ table {
 	/* liScroll styles */
 
 	.tickercontainer { /* the outer div with the black border */
-		background: black;
-		border: 1px solid #000;
 		width: 738px; 
-		height: 27px; 
+		height: 30px; 
 		margin: 0; 
 		padding: 0;
 		overflow: hidden; 
@@ -157,9 +155,10 @@ table {
 		float: left; /* important: display inline gives incorrect results when you check for elem's width */
 		margin: 0;
 		padding: 0;
+font-size:17px;
 	}
 	ul.newsticker span {
-		margin: 0 15px 0 20px;
+		margin: 0 10px 0 20px;
 	} 
 
 </style>
@@ -186,7 +185,7 @@ $(function () {
 				}
 				)
 				$("#total_count").text(data.total);
-				$("#bpm").html(data.bpm + " bpm");
+				$("#bpm").html(data.bpm + "&nbsp;bpm");
 				$("#sum_num").width((data.total*100/11160)+'%');
 
 				if(last_bpm > data.bpm)
@@ -236,14 +235,12 @@ $(function () {
 </table>
 
 <ul id="ticker">
-    <li><span>06/06/2012</span>Das Sommerfest. Unser Geheimfavorit.</li>
-    <li><span>06/06/2012</span>Two beer or not not two beer?</li>
+    <li><span>06/06/2012</span>Das Sommerfest 2012. Unser Geheimfavorit.</li>
     <li><span>06/06/2012</span>To beer! The cause of - and solution to - all of life's problems</li>
-    <li><span>06/06/2012</span>One beer is no beer, two beers are half a beer, and three beers are one beer. But one beer is no beer!</li>
     <li><span>06/06/2012</span>Heute ist übrigens Sommerfest im Inffeld!</li>
-    <li><span>06/06/2012</span>Pointless news crawls up 37%</li>
-    <li><span>06/06/2012</span>Beer is a popular alcoholic beverage.</li>
-    <li><span>Noch eine wichtige Meldung am Schluss:</span>Für alle TelematikerInnen: Nächsten Montag, 13h i11 Hörerversammlung und Sammlung von Ideen für den Master!</li>
+    <li><span>06/06/2012</span>Two beer or not not two beer?</li>
+    <li><span>06/06/2012</span>Etwaige Gewinne aus diesem Fest gehen übrigens an das Sozialreferat der HTU</li>
+    <li><span>06/06/2012</span>Für alle TelematikerInnen: Nächsten Montag, 13h im i11 Hörerversammlung und Sammlung von Ideen für den Master!</li>
 </ul>
 
 
