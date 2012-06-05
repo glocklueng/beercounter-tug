@@ -127,37 +127,15 @@ table {
 	<script language="javascript" type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script language="javascript" type="text/javascript">
 
-var UPDATE_RATE=500;
-var x=0;
+var UPDATE_RATE=100;
 
-
-	pumps =
-	[
-		{"name" :"zapfhan1",
-		 "value": 123},
-		{"name" :"zapfhan2",
-		 "value": 123},
-		{"name" :"zapfhan3",
-		 "value": 123},
-		{"name" :"zapfhan4",
-		 "value": 123},
-		{"name" :"zapfhan5",
-		 "value": 123},
-		{"name" :"zapfhan6",
-		 "value": 123},
-		{"name" :"zapfhan7",
-		 "value": 123},
-		{"name" :"zapfhan8",
-		 "value": 123}
-	]
+var last_bpm=0;
+var counter=0;
 
 $(function () {
-
 	setInterval(
 		function ()
 		{
-			x+=1;
-
 			$.getJSON('/data/small.json', function(data) {
 
 				$('#table_inner').empty();
@@ -165,13 +143,27 @@ $(function () {
 					function (index, element)
 					{
 
-						$('#table_inner').append($('<td>').html(element.name + "<br />" + (element.value+x)));
+						$('#table_inner').append($('<td>').html(element.name + "<br />" + (element.value)));
 					}
 					)
 
 				$("#total_count").text(data.total);
 				$("#bpm").html(data.bpm + " BPM");
 				$("#sum_num").width((data.total*100/11160)+'%');
+
+				if(last_bpm > data.bpm)
+					$('#arrow').attr("src", "arrows/down.png");
+				else if(last_bpm < data.bpm)
+					$('#arrow').attr("src", "arrows/up.png");
+				else
+					$('#arrow').attr("src", "arrows/move.png");
+				
+				if(counter > 60)
+				{
+					last_bpm = data.bpm;
+					counter = 0;
+				}
+				counter++;
 
 			});
 
@@ -192,7 +184,7 @@ $(function () {
 <div id="graph">Some JS Guru's Work</div>
 
 <div id="bpm">21&nbsp;bpm</div>
-<img id="arrow" src="arrows/up_hopf.png" />
+<img id="arrow" src="arrows/up.png" />
 <div id="hundert">100%</div>
 <div id="sum"><div id="sum_num" style="width:90%;">&nbsp;</div></div>
 
