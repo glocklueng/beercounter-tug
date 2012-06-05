@@ -23,7 +23,7 @@ def fetch_small_data():
 	cur.execute("SELECT SUM(count) AS total FROM t_count")
 	result["total"] = cur.fetchone()["total"]
 
-	cur.execute("SELECT AVG(count) AS bpm FROM t_count WHERE time > NOW() - '20 minute'::INTERVAL")
+	cur.execute("SELECT AVG(count)/20 AS bpm FROM t_count WHERE time > NOW() - '20 minute'::INTERVAL")
 	result["bpm"] = cur.fetchone()["bpm"]
 
 	f_out = open(OUTFILE, 'w')
