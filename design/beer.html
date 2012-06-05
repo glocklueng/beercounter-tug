@@ -158,34 +158,25 @@ $(function () {
 		{
 			x+=1;
 
-			$.getJSON('http://paratest.htu.tugraz.at/data/small.json', function(data) {
-			  var items = [];
+			$.getJSON('/data/small.json', function(data) {
 
-			  $.each(data, function(key, val) {
-			    items.push('<li id="' + key + '">' + val + '</li>');
-			  });
+				$('#table_inner').empty();
+				$(data.pumps).each(
+					function (index, element)
+					{
 
-			  $('<ul/>', {
-			    'class': 'my-new-list',
-			    html: items.join('')
-			  }).appendTo('body');
+						$('#table_inner').append($('<td>').html(element.name + "<br />" + (element.value+x)));
+					}
+					)
+
+				$("#total_count").text(data.total);
+				$("#bpm").html(data.bpm + " BPM");
+				$("#sum_num").width((data.total*100/11160)+'%');
+
 			});
 
-			$('#table_inner').empty();
-			$(pumps).each(
-				function (index, element)
-				{
 
-					$('#table_inner').append($('<td>').html(element.name + "<br />" + (element.value+x)));
-				}
-				)
-
-			$("#total_count").text(x);
-			$("#bpm").html(x + " BPM");
-			$("#sum_num").width(x+'%');
-			document.setTimeout(update,UPDATE_RATE);
 		}, UPDATE_RATE )
-	$("#bpm").html(x + " BPM");
 })
 
 	</script>
