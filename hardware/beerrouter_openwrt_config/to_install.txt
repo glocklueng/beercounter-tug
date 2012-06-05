@@ -1,0 +1,1 @@
+opkg install kmod-usb-acm ip python-psycopg

@@ -1,0 +1,2 @@
+
+* * * * * ps | grep -q "[b]eerrouter.py" || /root/beerrouter.py &
