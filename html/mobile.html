@@ -18,7 +18,7 @@
 
 <script language="javascript" type="text/javascript">
 
-var UPDATE_RATE=100;
+var UPDATE_RATE=250;
 var last_bpm=0;
 var counter=0;
 
@@ -81,19 +81,33 @@ $(function () {
 
 <div data-role="page">
 	<div data-role="header">
-		<h1>Beerstats</h1>
+		<h1>Beerstats - Sum</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<ul id="table_inner" data-role="listview">
+			<!--<li> Test <span class="ui-li-count">123</span></li>-->
+			<!--<li id="total_count">0</li>
+			<li id="bpm">21&nbsp;bpm</div>
+			<li id="arrow" src="arrows/up.png" s/>-->
+			<li>BeerPerMinute<span id="bpm">21&nbsp;bpm</span></li>
+			<li>Trend<span class="ui-li-count" id="sum"><img style="width:15px;height:15px;" src="arrows/up.png"></img></span></li>
+			<li>Total<span class="ui-li-count" id="sum"></span></li>
+		</ul>
+	</div>
+
+
+
+
+	<div data-role="header">
+		<h1>Beerstats - Last hour - Last 10 hours</h1>
 	</div><!-- /header -->
 	<div data-role="content">
 
-		<div id="total_count">0</div>
+
 
 		<div id="graph_hour" style="height:200px">&nbsp;</div>
 		<div id="graph_10h" style="height:100px">&nbsp;</div>
-
-		<div id="bpm">21&nbsp;bpm</div>
-		<img id="arrow" src="arrows/up.png" style="width:20px;height:20px;"/>
-		<div id="hundert">100%</div>
-		<div id="sum"><div id="sum_num" style="width:90%;">&nbsp;</div></div>
 	</div>
 
 	<div data-role="header">
@@ -103,7 +117,6 @@ $(function () {
 		<ul id="table_inner" data-role="listview">
 			<!--<li> Test <span class="ui-li-count">123</span></li>-->
 		</ul>
-
 	</div>
 </div>
 
