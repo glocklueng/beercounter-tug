@@ -51,7 +51,7 @@ $(function () {
 
 				$("#total_count").text(data.total);
 				$("#bpm").html(data.bpm + "&nbsp;bpm");
-				$("#sum_num").width((data.total*100/11160)+'%');
+				//$("#sum_num").width((data.total*100/11160)+'%');
 
 				if(last_bpm > data.bpm)
 					$('#arrow').attr("src", "arrows/down.png");
@@ -92,7 +92,7 @@ $(function () {
 			<li id="arrow" src="arrows/up.png" s/>-->
 			<li>BeerPerMinute<span id="bpm">21&nbsp;bpm</span></li>
 			<li>Trend<span class="ui-li-count"><img id="arrow" style="width:15px;height:15px;" src="arrows/up.png"></img></span></li>
-			<li>Total<span class="ui-li-count" id="sum"></span></li>
+			<li>Total<span class="ui-li-count" id="total_count"></span></li>
 		</ul>
 	</div>
 
