@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Beer</title>
+<style type="text/css">
+</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<!--<link rel="stylesheet" href="desktop.css" />-->
+<!--<script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>-->
+
+	<script language="javascript" type="text/javascript" src="js/jquery.flot.min.js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery.li-scroller.1.0.js"></script>
+
+
+
+<script language="javascript" type="text/javascript">
+
+var UPDATE_RATE=100;
+var last_bpm=0;
+var counter=0;
+
+$(function () {
+	setInterval(
+		function ()
+		{
+			$.getJSON('/data/small.json', function(data)
+			{
+				$('#table_inner').empty();
+				$(data.pumps).each(
+				function (index, element)
+				{
+					a= $('#table_inner').append($('<li>').html(element.name + '<span class="ui-li-count">' + element.value + "</span>"));
+				}
+				)
+				$("#total_count").text(data.total);
+				$("#bpm").html(data.bpm + "&nbsp;bpm");
+				$("#sum_num").width((data.total*100/11160)+'%');
+
+				if(last_bpm > data.bpm)
+					$('#arrow').attr("src", "arrows/down.png");
+				else if(last_bpm < data.bpm)
+					$('#arrow').attr("src", "arrows/up.png");
+				else
+					$('#arrow').attr("src", "arrows/move.png");
+				if(counter > 60)
+				{
+					last_bpm = data.bpm;
+					counter = 0;
+				}
+				counter++;
+			});
+		}, UPDATE_RATE );
+
+	setInterval(
+		function ()
+		{
+
+			$.getJSON('/data/history.json', function(data) {
+				$.plot($('#graph_hour'), [data.last_hour], {line:{lineWidth:"5px",fillColor:"white"},time:true, xaxis:{mode:"time"}})
+				$.plot($('#graph_10h'), [data['10h']], {time:true, xaxis:{mode:"time"}})
+			});
+		},
+	5000
+	);
+	$("ul#ticker").liScroll();
+})
+
+</script>
+</head>
+<body>
+
+<div data-role="page">
+	<div data-role="header">
+		<h1>Beerstats</h1>
+	</div><!-- /header -->
+	<div data-role="content">
+
+		<div id="total_count">4234</div>
+
+		<div id="graph_hour">&nbsp;</div>
+		<div id="graph_10h">&nbsp;</div>
+
+		<div id="bpm">21&nbsp;bpm</div>
+		<img id="arrow" src="arrows/up.png" style="width:20px;height:20px;"/>
+		<div id="hundert">100%</div>
+		<div id="sum"><div id="sum_num" style="width:90%;">&nbsp;</div></div>
+
+		<ul id="table_inner" data-role="listview"></ul>
+
+	</div>
+</div>
+
+<!--<ul id="ticker">
+    <li><span>06/06/2012</span>Das Sommerfest 2012. Unser Geheimfavorit.</li>
+    <li><span>06/06/2012</span>To beer! The cause of - and solution to - all of life's problems</li>
+    <li><span>06/06/2012</span>durchfluss.htu.tugraz.at auch am smartphone!</li>
+    <li><span>06/06/2012</span>Studiengebühren könnten Projekte wie dieses verhindern!</li>
+    <li><span>06/06/2012</span>Etwaige Gewinne aus diesem Fest gehen übrigens an das Sozialreferat der HTU</li>
+    <li><span>06/06/2012</span>Wir begrüßen alle 499 FestbesucherInnen!</li>
+    <li><span>06/06/2012</span>Für alle TelematikerInnen: Nächsten Montag, 13h im i11 Hörerversammlung und Sammlung von Ideen für den Master!</li>
+</ul>-->
+
+
+
+</body>
+</html>
