@@ -22,6 +22,17 @@ var UPDATE_RATE=100;
 var last_bpm=0;
 var counter=0;
 
+function draw_graphs()
+{
+
+
+	$.getJSON('/data/history.json', function(data) {
+		$.plot($('#graph_hour'), [data.last_hour], {line:{lineWidth:"5px",fillColor:"white"},time:true, xaxis:{mode:"time"}})
+		$.plot($('#graph_10h'), [data['10h']], {time:true, xaxis:{mode:"time"}})
+	});
+
+}
+
 $(function () {
 	setInterval(
 		function ()
@@ -58,14 +69,7 @@ $(function () {
 		}, UPDATE_RATE );
 
 	setInterval(
-		function ()
-		{
-
-			$.getJSON('/data/history.json', function(data) {
-				$.plot($('#graph_hour'), [data.last_hour], {line:{lineWidth:"5px",fillColor:"white"},time:true, xaxis:{mode:"time"}})
-				$.plot($('#graph_10h'), [data['10h']], {time:true, xaxis:{mode:"time"}})
-			});
-		},
+		draw_graphs,
 	5000
 	);
 	$("ul#ticker").liScroll();
