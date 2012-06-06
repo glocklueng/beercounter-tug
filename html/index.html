@@ -172,6 +172,9 @@ var last_bpm=0;
 var counter=0;
 
 $(function () {
+if (screen.width <= 699) {
+document.location = "mobile.html";
+}
 	setInterval(
 		function ()
 		{
