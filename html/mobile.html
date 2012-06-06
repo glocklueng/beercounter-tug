@@ -35,6 +35,9 @@ $(function () {
 					a= $('#table_inner').append($('<li>').html(element.name + '<span class="ui-li-count">' + element.value + "</span>"));
 				}
 				)
+
+				$('#table_inner').listview('refresh');
+
 				$("#total_count").text(data.total);
 				$("#bpm").html(data.bpm + "&nbsp;bpm");
 				$("#sum_num").width((data.total*100/11160)+'%');
@@ -88,7 +91,9 @@ $(function () {
 		<div id="hundert">100%</div>
 		<div id="sum"><div id="sum_num" style="width:90%;">&nbsp;</div></div>
 
-		<ul id="table_inner" data-role="listview"></ul>
+		<ul id="table_inner" data-role="listview">
+			<!--<li> Test <span class="ui-li-count">123</span></li>-->
+		</ul>
 
 	</div>
 </div>
