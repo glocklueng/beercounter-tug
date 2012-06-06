@@ -37,7 +37,7 @@ function draw_graphs()
 
 
 	$.getJSON('/data/history.json', function(data) {
-		$.plot($('#graph_hour'), [data.last_hour], {line:{lineWidth:"5px",fillColor:"white"},time:true, xaxis:{mode:"time"}})
+		$.plot($('#graph_hour'), [data.last_hour], {line:{lineWidth:3, color:"black"},time:true, xaxis:{mode:"time"}})
 		$.plot($('#graph_10h'), [data['10h']], {time:true, xaxis:{mode:"time"}})
 	});
 
